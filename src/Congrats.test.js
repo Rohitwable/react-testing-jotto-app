@@ -12,12 +12,17 @@ Enzyme.configure({ adapter: new Adapter() });
  * @param {object} state 
  * @returns { ShallowWrapper }
  */
+
+ //setup the default props
+
+ const defaultProps = { success: false };
 const setupComponent = (props = {}, state = null) => {
-    return shallow(<Congrats {...props} />);
+    const setupProps = {...defaultProps, ...props};
+    return shallow(<Congrats {...setupProps} />);
 }
 
 it('renders without any error', () => {
-    const wrapper = setupComponent({ success: false });
+    const wrapper = setupComponent();
     const component = findByTestAttr(wrapper, 'congrats-component');
     expect(component.length).toBe(1);
 });
