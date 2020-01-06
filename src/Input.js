@@ -3,9 +3,16 @@ import { connect } from 'react-redux';
 
 class Input extends React.Component {
     render() {
+        const contents = this.props.success ? null :
+            (
+                <form>
+                    <input data-test="input-box" type="text" placeholder="Guess Word" />
+                    <button data-test="submit-button" type="submit">Submit</button>
+                </form>
+            )
         return (
-            <div>
-                <button>Hi</button>
+            <div data-test="input-component">
+                {contents}
             </div>
         )
     }
